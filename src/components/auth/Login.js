@@ -16,7 +16,8 @@ export const Login = () => {
                     const user = foundUsers[0]
                     localStorage.setItem("stay_user", JSON.stringify({
                         id: user.id,
-                        staff: user.admin
+                        admin: user.admin,
+                        name: user.name
                     }))
 
                     navigate("/")
@@ -32,7 +33,7 @@ export const Login = () => {
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>STAY On Top Of It!</h1>
-                    <h2>Please sign in</h2>
+                    <h2>Login Below</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
                         <input type="email"

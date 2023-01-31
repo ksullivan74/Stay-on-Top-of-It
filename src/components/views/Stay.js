@@ -2,8 +2,8 @@ import {Route,Routes} from "react-router-dom"
 import { Login } from "../auth/Login";
 import { Register } from "../auth/Register";
 import { Authorized } from "./Authorized";
-import { NavBar } from "../nav/NavBar";
 import { ApplicationViews } from "./ApplicationViews";
+import { NavBar } from "../nav/NavBar";
 
 
 export const Stay = () => {
