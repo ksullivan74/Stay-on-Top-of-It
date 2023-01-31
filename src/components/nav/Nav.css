@@ -1,0 +1,15 @@
+.h1 {
+    display: flex;
+    align-content: center;
+    font-family: monospace;
+}
+.navbar{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+
+}
+.navbar_item{
+    flex-basis: 20%;
+    align-content: space-between;
+}

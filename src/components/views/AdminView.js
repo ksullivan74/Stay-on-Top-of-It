@@ -16,7 +16,7 @@ export const AdminView = () => {
                 </>
             }>
 
-                <Route path="ViewAllJobs" element={< ViewAllJobs />} />
+                <Route path="ViewAllJobs" element={<ViewAllJobs />} />
                 <Route path="AssignAJob" element={< AssignAJob />} />
                 <Route path="ManageJobs" element={< ManageJobs />} />
                 <Route path="AddAUser" element={< AddAUser />} />

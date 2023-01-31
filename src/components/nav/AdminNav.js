@@ -1,4 +1,5 @@
 import { Link,useNavigate } from "react-router-dom";
+import "./Nav.css"
 
 export const AdminNav  = () => {
 
@@ -10,19 +11,19 @@ export const AdminNav  = () => {
     return(
          <>
             <h3>Welcome {stayUserObject.name}</h3>
-            <h1>Stay On Top Of it</h1>
+            <h1 className="h1">Stay On Top Of it</h1>
             <div>Your key to home maitainence</div>
-            <ul>
-                <li>
-                    <Link to="ViewAllJobs">View All Jobs</Link>
+            <ul className="navbar">
+                <li className="navbar_item">
+                    <Link to="/ViewAllJobs">View All Jobs</Link>
                 </li>
-                <li>
+                <li  className="navbar_item">
                     <Link to="AssignAJob">Assign A Job</Link>
                 </li>
-                <li>
+                <li  className="navbar_item">
                     <Link to="ManageJobs">Manage Jobs</Link>
                 </li>
-                <li>
+                <li  className="navbar_item">
                     <Link to="AddAUser">Add a User</Link>
                 </li>
             {
