@@ -5,7 +5,7 @@ export const ViewAllJobs = () => {
     
     useEffect(
         () => {
-            fetch(`http://localhost:8088/jobs`)
+            fetch(`http://localhost:8088/jobs/?_expand=cadence&_expand=category`)
             .then(resp => resp.json())
             .then((jobsArray) => {
                 setJobs(jobsArray)
@@ -22,8 +22,11 @@ export const ViewAllJobs = () => {
                 jobs.map(
                     (job) => {
                         return <section>
+                            <h2>Job:</h2>
                             <header>Job: {job.title}</header>
                             <header>Due Date: {job.dueDate}</header>
+                            <header>Occurs: {job.cadence.cadence}</header>
+                            <header>Category: {job.category.category}</header>
                         </section>
                     }
                 )
