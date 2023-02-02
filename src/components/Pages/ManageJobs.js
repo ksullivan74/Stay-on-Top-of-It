@@ -52,8 +52,8 @@ export const ManageJobs = () => {
             title: job.title,
             dueDate: job.dueDate,
             compeleteDate: null,
-            cadenceId: job.cadenceId,
-            categoryId: job.categoryId,
+            cadenceId: parseInt(job.cadenceId),
+            categoryId: parseInt(job.categoryId),
             foremanId: stayUserObject.id,
             helperId: null
 

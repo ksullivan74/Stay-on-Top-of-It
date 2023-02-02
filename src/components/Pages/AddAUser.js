@@ -1,17 +1,55 @@
+import { getActiveElement } from "@testing-library/user-event/dist/utils";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { isRouteErrorResponse, useNavigate } from "react-router-dom";
 
 export const AddAUser = () => {
    
+    const [user,updateUser] = useState({
+        name: "",
+        email: "",
+        admin: false,
+        foremanId: "",
+        helperId: ""
+    })
+
    const navigate = useNavigate()
 
    const localStayUser = localStorage.getItem("stay_user")
    const stayUserObject = JSON.parse(localStayUser)
 
    
-
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
+
+        const userToSendToApi = {
+            name: user.name,
+            email: user.email,
+            admin: user.admin,
+            foremanId: user.id,
+            helperId: user.id
+        }
+
+        const helperToSendToApi = {
+
+        }
+
+        const foremanToSendToApi = {
+
+        }
+
+        return fetch (`http://localhost:8088/users`,{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON. stringify(userToSendToApi)
+        })
+        .then( resp => resp.json())
+        .then (
+            () => {
+
+            }
+        )
 
     }
    
@@ -25,10 +63,12 @@ export const AddAUser = () => {
                     <label>Name:</label>
                     <input  type="text"
                             placeholder="User Name"
-                            value=""
+                            value={user.name}
                             onChange={
                                 (event) => {
-                                    
+                                    const copy = {...user}
+                                    copy.name = event.target.value
+                                    updateUser(copy)
                                 }
                             }
                     />
@@ -39,10 +79,12 @@ export const AddAUser = () => {
                     <label>Email</label>
                     <input  type="text"
                             placeholder="User Email"
-                            value=""
+                            value={user.email}
                             onChange={
                                 (event) => {
-                                    
+                                    const copy = {...user}
+                                    copy.email = event.target.value
+                                    updateUser(copy)
                                 }
                             }
                     />
@@ -51,11 +93,14 @@ export const AddAUser = () => {
             <fieldset>
                 <div>
                     <label>Check if user is admin:</label>
-                    <input  type="radio"
-                            value=""
+                    <input  type="checkbox"
+                            name= "admin"
+                            checked={user.admin}
                             onChange={
                                 (event) => {
-                                    
+                                    const copy = {...user}
+                                    copy.admin = event.target.checked
+                                    updateUser(copy)
                                 }
                             }
                     />
