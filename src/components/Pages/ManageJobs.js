@@ -15,11 +15,23 @@ export const ManageJobs = () => {
     helperId: null
 
    })
+   const [jobsList,getJobsList] = useState([])
    
    const navigate = useNavigate()
 
    const localStayUser = localStorage.getItem("stay_user")
    const stayUserObject = JSON.parse(localStayUser)
+
+   useEffect(
+    () => {
+        fetch(`http://localhost:8088/jobs`)
+        .then(resp => resp.json())
+        .then((jobsArray) => {
+            getJobsList(jobsArray)
+        }
+        )
+    },[]
+)
 
    useEffect(
         () => {
@@ -72,6 +84,10 @@ export const ManageJobs = () => {
                 navigate("/ViewAllJobs")
             }
        )
+    }
+
+    const deleteJobClick = () => {
+
     }
    
 
@@ -166,6 +182,42 @@ export const ManageJobs = () => {
                     Create Job
             </button>
         </form>
+        <div>
+            <h2>Delete a Job?</h2>
+            <section>
+            <fieldset>
+                <div>
+                    <label>Job Title:</label>
+                    <select name="Job Category"
+                    onChange={
+                        (event) => {
+                            const copy = {...job}
+                            copy.categoryId = event.target.value
+                            updateJob(copy)
+                        }
+                    }>
+                        <option value="0">Choose a Job</option>
+                    {
+                            jobsList.map(
+                                (job) => {
+                                  return(
+                                  <option value={job.id}>{job.title}</option>
+                                  )
+                                }
+                            )
+                        }
+
+                    </select>
+                </div>
+            </fieldset>
+            <button 
+                onClick={(clickEvent) => deleteJobClick(clickEvent)}
+                className="">
+                    Delete Job
+            </button>
+            </section>
+        </div>
+
         </>
     )
 }

@@ -1,0 +1,25 @@
+.jobsContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    order: 5;
+}
+.jobElement{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.jobLine{
+   font-family: Arial, Helvetica, sans-serif;
+   padding: 2px;
+}
+.completedJob{
+    font-family: Arial, Helvetica, sans-serif;
+   padding: 2px;
+   background-color: dimgray;
+}
+.button {
+     border-radius: 12px;
+     font-size: 16px;
+}

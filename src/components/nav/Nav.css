@@ -7,6 +7,7 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+   background-color: rgb(232, 255, 236);
 
 }
 .navbar_item{

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../Pages/Pages.css"
 
 export const ViewAllJobs = () => {
     const [jobs, setJobs] = useState([])
@@ -19,19 +20,19 @@ export const ViewAllJobs = () => {
 
 
   return <>
+  <h2>Jobs:</h2>
+  <div className="jobsContainer">
   {
     jobs.map(
         (job) => {
             if (job.compeleteDate === null) {
                 return <>
-                    <h2>Job To Complete:</h2>
-                    <article>
-                        <section>
-                            <header>Job: {job.title}</header>
-                            <header>Due Date: {job.dueDate}</header>
-                            <header>Occurs: {job.cadence.cadence}</header>
-                            <header>Category: {job.category.category}</header>
-                            <header>Is it Done? Click this button:</header>
+                    <article className="jobElement">
+                            <header className="jobLine">Job: {job.title}</header>
+                            <header  className="jobLine">Due Date: {job.dueDate}</header>
+                            <header  className="jobLine">Occurs: {job.cadence.cadence}</header>
+                            <header  className="jobLine">Category: {job.category.category}</header>
+                            <header  className="jobLine">Is it Done? Click this button:</header>
                             <button
                                 onClick={() => {
                                     const dateUpdate = {
@@ -47,29 +48,18 @@ export const ViewAllJobs = () => {
                                         .then(() => {
                                             navigate("/ViewAllJobs")
                                         })
-                                }} className="">
+                                }} className="button">
                                 Complete Job
                             </button>
-                        </section>
                     </article>
                 </>
             }
             else {
-                return<>
-                    <h2>Completed Jobs!!:</h2>
-                    <article>
-                        <section>
-                            <header>Job: {job.title}</header>
-                            <header>Due Date: {job.dueDate}</header>
-                            <header>Occurs: {job.cadence.cadence}</header>
-                            <header>Category: {job.category.category}</header>
-                            <header>Completed: {job.compeleteDate}</header>
-                        </section>
-                    </article>
-                </>
+                return<></>
             }
         }
     )
   }
+  </div>
   </>
 }

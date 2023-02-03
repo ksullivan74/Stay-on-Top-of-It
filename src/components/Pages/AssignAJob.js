@@ -79,11 +79,11 @@ export const AssignAJob = () => {
                             (event) => {
                                 const copy = {...selectedJobId}
                                 copy.id = parseInt(event.target.value)
-                                // pass the job.id selection into a seperate Object
                                 setSelectedJobId(copy)
                             }
                         }
                     >
+                        <option value="0">Choose a Job</option>
                         {
                             jobs.map(
                                 (job) => {
@@ -102,6 +102,7 @@ export const AssignAJob = () => {
                                 copy.id  = parseInt(event.target.value)
                                 setSelectedUser(copy)}
                         }>
+                            <option value="0">Choose a User</option>
                         {
                             users.map(
                                 (user) => {
