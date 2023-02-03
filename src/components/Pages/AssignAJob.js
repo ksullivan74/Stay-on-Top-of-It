@@ -6,7 +6,10 @@ export const AssignAJob = () => {
     const [selectedJobId, setSelectedJobId] = useState({}) //2
     const [selectedJob, setSelectedJob] = useState({}) //3
     const [users,getusers] = useState([]) //4
-    const [selectedUser,setSelectedUser] = useState({}) //5
+    const [selectedUser,setSelectedUser] = useState({
+        foremanId: "",
+        helperId: ""
+    }) //5
 
     const localStayUser = localStorage.getItem("stay_user")
     const stayUserObject = JSON.parse(localStayUser)
@@ -41,7 +44,7 @@ export const AssignAJob = () => {
                 setSelectedJob(selectedJobObj)
             }
             )
-        },[selectedJobId.id]
+        },[selectedJobId]
     )
 
 
@@ -49,12 +52,14 @@ export const AssignAJob = () => {
         event.preventDefault()
 
         const assignedJobToSendToApi = {
+            
+            foremanId: stayUserObject.id,
             helperId: selectedUser.id,
-            foremanId: stayUserObject.id
+        
         }
 
-        return fetch(`http://localhost:8088/jobs/?id=${selectedJob.id}`, {
-            method: "PUT",
+        return fetch(`http://localhost:8088/jobs/${selectedJobId.id}`, {
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -93,8 +98,8 @@ export const AssignAJob = () => {
                     <select
                         onChange={
                             (event) => {
-                                const copy = {...selectedUser}
-                                copy.id = parseInt(event.target.value)
+                                const copy ={...selectedUser}
+                                copy.id  = parseInt(event.target.value)
                                 setSelectedUser(copy)}
                         }>
                         {

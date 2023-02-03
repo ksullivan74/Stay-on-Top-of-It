@@ -122,6 +122,7 @@ export const ManageJobs = () => {
                             updateJob(copy)
                         }
                     }>
+                        <option value="0">Choose Cadence</option>
                         {
                             cadence.map(
                                 (cadence) => {
@@ -145,6 +146,7 @@ export const ManageJobs = () => {
                             updateJob(copy)
                         }
                     }>
+                        <option value="0">Choose Category</option>
                     {
                             category.map(
                                 (category) => {
