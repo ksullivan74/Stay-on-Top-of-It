@@ -87,7 +87,12 @@ export const ManageJobs = () => {
     }
 
     const deleteJobClick = () => {
-
+        fetch(`http://localhost:8088/jobs/${job.id}`,{
+            method: "DELETE"
+        })
+        .then (() =>{
+            navigate("/ViewAllJobs")
+        })
     }
    
 
@@ -192,7 +197,7 @@ export const ManageJobs = () => {
                     onChange={
                         (event) => {
                             const copy = {...job}
-                            copy.categoryId = event.target.value
+                            copy.id = event.target.value
                             updateJob(copy)
                         }
                     }>
