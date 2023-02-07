@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "../Pages/Pages.css"
 
 export const ViewAllJobs = () => {
     const [jobs, setJobs] = useState([])
     const [users, getUsers] = useState([])
-
-    const localStayUser = localStorage.getItem("stay_user")
-    const stayUserObject = JSON.parse(localStayUser)
 
     const getAllJobs = () => {
         fetch(`http://localhost:8088/jobs/?_expand=cadence&_expand=category`)
@@ -35,14 +31,6 @@ export const ViewAllJobs = () => {
 
     const userHelperMatch = (helperIdObj) =>{
 
-       /* const matchingHelper = users.find(
-            (user) => {
-                return  user.id === helperIdObj
-            }
-            )
-            return `${matchingHelper.name}`
-        */
-
         let matchingHelper = ""
 
         for ( const user of users) {
@@ -54,14 +42,6 @@ export const ViewAllJobs = () => {
     }
 
     const userForemanMatch = (helperIdObj) =>{
-
-        /* const matchingHelper = users.find(
-             (user) => {
-                 return  user.id === helperIdObj
-             }
-             )
-             return `${matchingHelper.name}`
-         */
  
          let matchingForeman = ""
  
@@ -82,7 +62,7 @@ export const ViewAllJobs = () => {
         (job) => {
             if (job.compeleteDate === null) {
                 return <>
-                    <article className="jobElement">
+                    <article key={job.id}  className="jobElement">
                             <header  className="jobLine">Job: {job.title}</header>
                             <header  className="jobLine">Due Date: {job.dueDate}</header>
                             <header  className="jobLine">Occurs: {job.cadence.cadence}</header>
@@ -112,7 +92,7 @@ export const ViewAllJobs = () => {
                 </>
             }
             else {
-                return<></>
+                return <></>
             }
         }
     )

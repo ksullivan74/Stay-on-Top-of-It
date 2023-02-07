@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import { isRouteErrorResponse, useNavigate } from "react-router-dom";
 
 export const AddAUser = () => {
-   
+    const [userId, setUserId] =useState({})
+   const [users,getUsers] = useState([])
     const [user,updateUser] = useState({
         name: "",
         email: "",
@@ -11,6 +12,18 @@ export const AddAUser = () => {
         foremanId: "",
         helperId: ""
     })
+
+
+    useEffect(
+        () => {
+            fetch(`http://localhost:8088/users`)
+            .then(resp => resp.json())
+            .then((usersArray) => {
+                getUsers(usersArray)
+            }
+            )
+        },[]
+    )
 
    const navigate = useNavigate()
 
@@ -47,12 +60,17 @@ export const AddAUser = () => {
         .then( resp => resp.json())
         .then (
             () => {
-
+                alert(`User Has been added`)
             }
         )
 
     }
    
+    const deleteUserButton =(event, userIdObj) => {
+        fetch(`http://localhost:8088/users/${userIdObj}`,{
+            method: "DELETE"
+        })
+    }
 
     return(
         <>
@@ -112,6 +130,40 @@ export const AddAUser = () => {
                     Add User
             </button>
         </form>
+        <h2>Delete a User:</h2>
+        <fieldset>
+        <div>
+            <label>
+            <select name="user"
+            onChange={
+                (event) => {
+                    const copy = {...userId}
+                    copy.id = event.target.value
+                    setUserId(copy)
+                }
+            }
+            >
+                        <option value="0">Choose User</option>
+                        {
+                            users.map(
+                                (user) => {
+                                  return(
+                                  <option key={user.id}  value={user.id}>{user.name}</option>
+
+                                  )
+                                }
+                            )
+                        }
+                    </select>
+            </label>
+        </div>
+        </fieldset>
+        <button
+        onClick={(clickEvent) => deleteUserButton(clickEvent, parseInt(userId.id))}
+                className="">
+                    Delete User
+        </button>
+
         </>
     )
 }

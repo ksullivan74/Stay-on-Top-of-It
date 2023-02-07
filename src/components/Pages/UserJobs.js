@@ -35,14 +35,6 @@ export const UserJobs = () => {
 
     const userHelperMatch = (helperIdObj) =>{
 
-       /* const matchingHelper = users.find(
-            (user) => {
-                return  user.id === helperIdObj
-            }
-            )
-            return `${matchingHelper.name}`
-        */
-
         let matchingHelper = ""
 
         for ( const user of users) {
@@ -54,14 +46,6 @@ export const UserJobs = () => {
     }
 
     const userForemanMatch = (helperIdObj) =>{
-
-        /* const matchingHelper = users.find(
-             (user) => {
-                 return  user.id === helperIdObj
-             }
-             )
-             return `${matchingHelper.name}`
-         */
  
          let matchingForeman = ""
  
