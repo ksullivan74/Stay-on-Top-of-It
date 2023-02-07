@@ -14,7 +14,7 @@ export const UserNav  = () => {
             <div>Your key to home maitainence</div>
             <ul>
                 <li>
-                    <Link to="ViewAllJobs">View All of your jobs</Link>
+                    <Link to="YourJobs">View All of your jobs</Link>
                 </li>
             {
                 localStorage.getItem("stay_user")

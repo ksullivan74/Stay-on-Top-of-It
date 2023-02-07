@@ -1,8 +1,5 @@
 import { Outlet, Route, Routes } from "react-router-dom"
-import { ViewAllJobs } from "../Pages/ViewAllJobs"
-import { AssignAJob } from "../Pages/AssignAJob";
-import { ManageJobs } from "../Pages/ManageJobs";
-import { AddAUser } from "../Pages/AddAUser";
+import { UserJobs } from "../Pages/UserJobs"; 
 
 export const UserView = () => {
     return (
@@ -16,7 +13,7 @@ export const UserView = () => {
                 </>
             }>
 
-                <Route path="ViewAllJobs" element={< ViewAllJobs />} />
+                <Route path="YourJobs" element={< UserJobs />} />
             </Route>
         </Routes>
     )
