@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate  } from "react-router-dom";
 
 export const AssignAJob = () => {
     const [jobs, getJobs] = useState([]) //1
@@ -13,6 +13,8 @@ export const AssignAJob = () => {
 
     const localStayUser = localStorage.getItem("stay_user")
     const stayUserObject = JSON.parse(localStayUser)
+
+    const navigate = useNavigate()
     
     useEffect(
         () => {
@@ -66,6 +68,11 @@ export const AssignAJob = () => {
             body: JSON.stringify(assignedJobToSendToApi)
         })
         .then (resp => resp.json())
+        .then(
+            () => {
+                navigate("/ViewAllJobs")
+            }
+       )
         
     }
 

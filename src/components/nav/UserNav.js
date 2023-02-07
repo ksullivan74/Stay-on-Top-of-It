@@ -12,8 +12,8 @@ export const UserNav  = () => {
             <h3>Welcome {stayUserObject.name}</h3>
             <h1>Stay On Top Of it</h1>
             <div>Your key to home maitainence</div>
-            <ul>
-                <li>
+            <ul className="navbar">
+                <li className="navbar_item">
                     <Link to="YourJobs">View All of your jobs</Link>
                 </li>
             {
