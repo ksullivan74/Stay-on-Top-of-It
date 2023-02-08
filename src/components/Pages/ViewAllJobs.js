@@ -62,7 +62,7 @@ export const ViewAllJobs = () => {
         (job) => {
             if (job.compeleteDate === null) {
                 return <>
-                    <article key={job.id}  className="jobElement">
+                    <section key={job.id}  className="jobElement">
                             <header  className="jobLine">Job: {job.title}</header>
                             <header  className="jobLine">Due Date: {job.dueDate}</header>
                             <header  className="jobLine">Occurs: {job.cadence.cadence}</header>
@@ -88,7 +88,7 @@ export const ViewAllJobs = () => {
                                 }} className="button">
                                 Complete Job
                             </button>
-                    </article>
+                    </section>
                 </>
             }
             else {
@@ -98,5 +98,32 @@ export const ViewAllJobs = () => {
     )
   }
   </div>
+  <h2>Completed Jobs:</h2>
+  <div className="jobsContainer">
+  {
+    jobs.map(
+        (job) => {
+            if (job.compeleteDate !== null) {
+                return <>
+                <section key={job.id}  className="jobElement">
+                    <article key={job.id}  className="jobElement">
+                            <header  className="jobLine">Job: {job.title}</header>
+                            <header  className="jobLine">Due Date: {job.dueDate}</header>
+                            <header  className="jobLine">Occurs: {job.cadence.cadence}</header>
+                            <header  className="jobLine">Category: {job.category.category}</header>
+                            <header  className="jobLine">Assigned To: {userHelperMatch(job.helperId)}</header>
+                            <header  className="jobLine">Assigned By: {userForemanMatch(job.foremanId)}</header>
+                    </article>
+                    </section>
+                </>
+            }
+            else {
+                return <></>
+            }
+        }
+    )
+  }
+  </div>
+
   </>
 }

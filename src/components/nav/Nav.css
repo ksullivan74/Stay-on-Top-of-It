@@ -6,8 +6,13 @@
 .navbar{
     display: flex;
     flex-wrap: nowrap;
-    justify-content: left;
-   background-color: rgb(232, 255, 236);
+    justify-content: center;
+    border-radius: 25px;
+    border-style: double  rgb(3, 26, 3);
+    background: #afdd6f;
+    padding: 20px;
+    height: 35px;
+
 
 }
 .navbar_item{
