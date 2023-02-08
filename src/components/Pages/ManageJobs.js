@@ -102,7 +102,7 @@ export const ManageJobs = () => {
         <form>
             <fieldset>
                 <div>
-                    <label>Title:</label>
+                    <label>Title: </label>
                     <input  type="text"
                             placeholder="What do you want to call this job?"
                             value={job.title}
@@ -118,7 +118,7 @@ export const ManageJobs = () => {
             </fieldset>
             <fieldset>
                 <div>
-                    <label>Due Date</label>
+                    <label>Due Date </label>
                     <input  type="date"
                             placeholder="What date is this job due?"
                             value={job.dueDate}
@@ -134,7 +134,7 @@ export const ManageJobs = () => {
             </fieldset>
             <fieldset>
                 <div>
-                    <label>Cadence</label>
+                    <label>Cadence </label>
                     <select name="cadence"
                     onChange={
                         (event) => {
@@ -158,7 +158,7 @@ export const ManageJobs = () => {
             </fieldset>
             <fieldset>
                 <div>
-                    <label>Job Category</label>
+                    <label>Job Category </label>
                     <select name="Job Category"
                     onChange={
                         (event) => {
@@ -192,7 +192,7 @@ export const ManageJobs = () => {
             <section>
             <fieldset>
                 <div>
-                    <label>Job Title:</label>
+                    <label>Job Title: </label>
                     <select name="Job Category"
                     onChange={
                         (event) => {

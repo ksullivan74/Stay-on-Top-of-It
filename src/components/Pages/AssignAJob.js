@@ -80,7 +80,7 @@ export const AssignAJob = () => {
         <form>
             <fieldset>
                 <div>
-                    <label>Job:</label>
+                    <label>Job: </label>
                     <select name="Job"
                         onChange={
                             (event) => {
@@ -101,7 +101,11 @@ export const AssignAJob = () => {
                             )
                         }
                     </select>
-                    <label>Assign To:</label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div>
+                    <label>Assign To: </label>
                     <select
                         onChange={
                             (event) => {
@@ -118,6 +122,10 @@ export const AssignAJob = () => {
                             )
                         }
                     </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div>
                     <button 
                         onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                         className="">
