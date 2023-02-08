@@ -3,19 +3,30 @@
     align-content: center;
     font-family: monospace;
 }
+.top_Ribbon{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.ribbonItem{
+    display: flex;
+    flex-wrap: wrap;
+    font-family: cursive;
+    color: #354421;
+}
 .navbar{
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     border-radius: 25px;
     border-style: double  rgb(3, 26, 3);
-    background: #afdd6f;
+    background: #cbe7a3;
     padding: 20px;
-    height: 35px;
-
-
+    height: 30px;
 }
 .navbar_item{
     flex-basis: 20%;
     align-content: space-between;
+    font-family: cursive;
+    color: #354421;
 }

@@ -10,9 +10,11 @@ export const AdminNav  = () => {
     
     return(
          <>
-            <h3>Welcome {stayUserObject.name}</h3>
-            <h1 className="h1">Stay On Top Of it</h1>
-            <div>Your key to home maitainence</div>
+        <div className="top_Ribbon">
+            <h2 className="ribbonItem">Welcome {stayUserObject.name}</h2>
+            <h1 className="ribbonItem">Stay On Top Of it</h1>
+            <h3 className="ribbonItem" >Your key to home maitainence</h3>
+        </div>
             <ul className="navbar">
                 <li className="navbar_item">
                     <Link to="/ViewAllJobs">View All Jobs</Link>

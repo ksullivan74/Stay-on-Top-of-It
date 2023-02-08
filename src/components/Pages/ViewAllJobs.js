@@ -55,7 +55,7 @@ export const ViewAllJobs = () => {
     
 
   return <>
-  <h2>Jobs:</h2>
+  <h2 className="h2" >Jobs:</h2>
   <div className="jobsContainer">
   {
     jobs.map(
@@ -98,7 +98,7 @@ export const ViewAllJobs = () => {
     )
   }
   </div>
-  <h2>Completed Jobs:</h2>
+  <h2 className="h2">Completed Jobs:</h2>
   <div className="jobsContainer">
   {
     jobs.map(
@@ -106,14 +106,12 @@ export const ViewAllJobs = () => {
             if (job.compeleteDate !== null) {
                 return <>
                 <section key={job.id}  className="jobElement">
-                    <article key={job.id}  className="jobElement">
                             <header  className="jobLine">Job: {job.title}</header>
                             <header  className="jobLine">Due Date: {job.dueDate}</header>
                             <header  className="jobLine">Occurs: {job.cadence.cadence}</header>
                             <header  className="jobLine">Category: {job.category.category}</header>
                             <header  className="jobLine">Assigned To: {userHelperMatch(job.helperId)}</header>
                             <header  className="jobLine">Assigned By: {userForemanMatch(job.foremanId)}</header>
-                    </article>
                     </section>
                 </>
             }
