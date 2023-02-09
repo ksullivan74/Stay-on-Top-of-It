@@ -10,7 +10,7 @@ export const AdminNav  = () => {
     
     return(
          <>
-        <div className="top_Ribbon">
+        <div className="top_Ribbon" fixed="top">
             <h2 className="ribbonItem">Welcome {stayUserObject.name}</h2>
             <h1 className="ribbonItem">Stay On Top Of it</h1>
             <h3 className="ribbonItem" >Your key to home maitainence</h3>

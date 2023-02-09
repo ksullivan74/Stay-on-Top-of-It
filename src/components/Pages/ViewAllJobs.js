@@ -55,7 +55,7 @@ export const ViewAllJobs = () => {
     
 
   return <>
-  <h2 className="h2" >Jobs:</h2>
+  <h2 className="h2" >Pending Jobs:</h2>
   <div className="jobsContainer">
   {
     jobs.map(
@@ -107,7 +107,7 @@ export const ViewAllJobs = () => {
                 return <>
                 <section key={job.id}  className="jobElement">
                             <header  className="jobLine">Job: {job.title}</header>
-                            <header  className="jobLine">Due Date: {job.dueDate}</header>
+                            <header  className="jobLine">Completed Date: {new Date(job.compeleteDate).toLocaleDateString()}</header>
                             <header  className="jobLine">Occurs: {job.cadence.cadence}</header>
                             <header  className="jobLine">Category: {job.category.category}</header>
                             <header  className="jobLine">Assigned To: {userHelperMatch(job.helperId)}</header>

@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const ManageJobs = () => {
-   const [cadence, updateCadence] =useState([])
-   const [category, updateCategory] = useState([]) 
+   const [cadence, updateCadence] =useState([]) //1
+   const [category, updateCategory] = useState([]) //2
    const [job, updateJob] = useState({
 
     title: "",
@@ -14,8 +14,8 @@ export const ManageJobs = () => {
     foremanId: 0,
     helperId: null
 
-   })
-   const [jobsList,getJobsList] = useState([])
+   }) //3
+   const [jobsList,getJobsList] = useState([]) //4
    
    const navigate = useNavigate()
 
