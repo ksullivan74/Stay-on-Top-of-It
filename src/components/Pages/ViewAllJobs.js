@@ -53,6 +53,23 @@ export const ViewAllJobs = () => {
          return matchingForeman
      }
     
+    // create a function that returns whether a job is overdue or not
+   
+    
+    const overDueFunction = (jobObj, dueDate) => {
+        const calculation = Date.now() - Date.parse(dueDate)
+
+        if (jobObj.cadence === "Daily" && calculation > 86400) {
+            return(<header className="overDue">Over Due?: Yes</header>)}
+        if (jobObj.cadence === "Weekly" && calculation > 518400) {
+            return(<header className="overDue">Over Due?: Yes</header>)}
+
+        else {
+            return(
+           "No")
+        }
+    }
+
 
   return <>
   <h2 className="h2" >Pending Jobs:</h2>
@@ -64,11 +81,12 @@ export const ViewAllJobs = () => {
                 return <>
                     <section key={job.id}  className="jobElement">
                             <header  className="jobLine">Job: {job.title}</header>
-                            <header  className="jobLine">Due Date: {job.dueDate}</header>
+                            <header  className="jobLine">Due Date: { new Date(job.dueDate).toLocaleDateString()}</header>
                             <header  className="jobLine">Occurs: {job.cadence.cadence}</header>
                             <header  className="jobLine">Category: {job.category.category}</header>
                             <header  className="jobLine">Assigned To: {userHelperMatch(job.helperId)}</header>
                             <header  className="jobLine">Assigned By: {userForemanMatch(job.foremanId)}</header>
+                            {overDueFunction(job.cadence, job.dueDate)}
                             <header  className="jobLine">Is it Done? Click this button:</header>
                             <button
                                 onClick={() => {
