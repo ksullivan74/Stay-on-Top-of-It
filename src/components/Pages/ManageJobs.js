@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../Pages/Pages.css"
 
 export const ManageJobs = () => {
    const [cadence, updateCadence] =useState([]) //1
@@ -96,132 +97,139 @@ export const ManageJobs = () => {
     }
    
 
-    return(
+    return (
         <>
-        <h2>Fill out the Form Below to add a new job</h2>
-        <form>
-            <fieldset>
-                <div>
-                    <label>Title: </label>
-                    <input  type="text"
+            <h2>Fill out the Form Below to add a new job</h2>
+            <form>
+                <fieldset>
+                    <div>
+                        <label>Title: </label>
+                        <input className="button"
+                            type="text"
                             placeholder="What do you want to call this job?"
                             value={job.title}
                             onChange={
                                 (event) => {
-                                    const copy = {...job}
+                                    const copy = { ...job }
                                     copy.title = event.target.value
                                     updateJob(copy)
                                 }
                             }
-                    />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div>
-                    <label>Due Date </label>
-                    <input  type="date"
+                        />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        <label>Due Date: </label>
+                        <input className="button"
+                            type="date"
                             placeholder="What date is this job due?"
                             value={job.dueDate}
                             onChange={
                                 (event) => {
-                                    const copy = {...job}
+                                    const copy = { ...job }
                                     copy.dueDate = event.target.value
                                     updateJob(copy)
                                 }
                             }
-                    />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div>
-                    <label>Cadence </label>
-                    <select name="cadence"
-                    onChange={
-                        (event) => {
-                            const copy = {...job}
-                            copy.cadenceId = event.target.value
-                            updateJob(copy)
-                        }
-                    }>
-                        <option value="0">Choose Cadence</option>
-                        {
-                            cadence.map(
-                                (cadence) => {
-                                  return(
-                                  <option value={cadence.id}>{cadence.cadence}</option>
-                                  )
+                        />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        <label>Cadence: </label>
+                        <select name="cadence"
+                            className="button"
+                            onChange={
+                                (event) => {
+                                    const copy = { ...job }
+                                    copy.cadenceId = event.target.value
+                                    updateJob(copy)
                                 }
-                            )
-                        }
-                    </select>
-                </div>
-            </fieldset>
-            <fieldset>
-                <div>
-                    <label>Job Category </label>
-                    <select name="Job Category"
-                    onChange={
-                        (event) => {
-                            const copy = {...job}
-                            copy.categoryId = event.target.value
-                            updateJob(copy)
-                        }
-                    }>
-                        <option value="0">Choose Category</option>
-                    {
-                            category.map(
-                                (category) => {
-                                  return(
-                                  <option value={category.id}>{category.category}</option>
-                                  )
+                            }>
+                            <option value="0">Choose Cadence</option>
+                            {
+                                cadence.map(
+                                    (cadence) => {
+                                        return (
+                                            <option value={cadence.id}>{cadence.cadence}</option>
+                                        )
+                                    }
+                                )
+                            }
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div>
+                        <label>Job Category: </label>
+                        <select
+                            className="button"
+                            name="Job Category"
+                            onChange={
+                                (event) => {
+                                    const copy = { ...job }
+                                    copy.categoryId = event.target.value
+                                    updateJob(copy)
                                 }
-                            )
-                        }
+                            }>
+                            <option value="0">Choose Category</option>
+                            {
+                                category.map(
+                                    (category) => {
+                                        return (
+                                            <option value={category.id}>{category.category}</option>
+                                        )
+                                    }
+                                )
+                            }
 
-                    </select>
-                </div>
-            </fieldset>
-            <button 
-                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                className="">
+                        </select>
+                    </div>
+                </fieldset>
+                <button className="button"
+                    onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+                >
                     Create Job
-            </button>
-        </form>
-        <div>
-            <h2>Delete a Job?</h2>
-            <section>
-            <fieldset>
-                <div>
-                    <label>Job Title: </label>
-                    <select name="Job Category"
-                    onChange={
-                        (event) => {
-                            const copy = {...job}
-                            copy.id = event.target.value
-                            updateJob(copy)
-                        }
-                    }>
-                        <option value="0">Choose a Job</option>
-                    {
-                            jobsList.map(
-                                (job) => {
-                                  return(
-                                  <option value={job.id}>{job.title}</option>
-                                  )
+                </button>
+            </form>
+            <div>
+                <h2>Delete a Job?</h2>
+                <section>
+                    <fieldset>
+                        <div>
+                            <label>Job Title: </label>
+                            <select
+                                className="button"
+                                name="Job Category"
+                                onChange={
+                                    (event) => {
+                                        const copy = { ...job }
+                                        copy.id = event.target.value
+                                        updateJob(copy)
+                                    }
+                                }>
+                                <option value="0">Choose a Job</option>
+                                {
+                                    jobsList.map(
+                                        (job) => {
+                                            return (
+                                                <option value={job.id}>{job.title}</option>
+                                            )
+                                        }
+                                    )
                                 }
-                            )
-                        }
 
-                    </select>
-                </div>
-            </fieldset>
-            <button 
-                onClick={(clickEvent) => deleteJobClick(clickEvent)}
-                className="">
-                    Delete Job
-            </button>
-            </section>
-        </div>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <button className="button"
+                        onClick={(clickEvent) => deleteJobClick(clickEvent)}
+                    >
+                        Delete Job
+                    </button>
+                </section>
+            </div>
 
         </>
     )

@@ -1,5 +1,4 @@
 .jobsContainer{
-    border-style: groove;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -7,15 +6,15 @@
     order: 5;
 }
 .jobElement{
-    border-style: dashed;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     padding: 20px;
 }
 .jobLine{
-    border-style: double;
     font-family: Arial, Helvetica, sans-serif;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 2px;
 }
 .completedJob{
