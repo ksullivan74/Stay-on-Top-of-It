@@ -56,17 +56,14 @@ export const ViewAllJobs = () => {
     // create a function that returns whether a job is overdue or not
    
     
-    const overDueFunction = (jobObj, dueDate) => {
+    const overDueFunction = (dueDate) => {
         const calculation = Date.now() - Date.parse(dueDate)
 
-        if (jobObj.cadence === "Daily" && calculation > 86400) {
-            return(<header className="overDue">Over Due?: Yes</header>)}
-        if (jobObj.cadence === "Weekly" && calculation > 518400) {
-            return(<header className="overDue">Over Due?: Yes</header>)}
-
+        if (calculation > 86400) {
+            return(<header className="overDue">Over Due?: Yes</header>)
+        }
         else {
-            return(
-           "No")
+            return(<header className="notOverDue">Over Due?: No</header>)
         }
     }
 
@@ -86,7 +83,7 @@ export const ViewAllJobs = () => {
                             <header  className="jobLine">Category: {job.category.category}</header>
                             <header  className="jobLine">Assigned To: {userHelperMatch(job.helperId)}</header>
                             <header  className="jobLine">Assigned By: {userForemanMatch(job.foremanId)}</header>
-                            {overDueFunction(job.cadence, job.dueDate)}
+                            {overDueFunction(job.dueDate)}
                             <header  className="jobLine">Is it Done? Click this button:</header>
                             <button
                                 onClick={() => {
